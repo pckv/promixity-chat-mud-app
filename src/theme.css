@@ -1,10 +1,120 @@
 :root {
-  --text-color-primary: rgb(242, 242, 242);
-  --text-color-secondary: rgb(120, 120, 120);
-  --text-color-error: rgb(255, 74, 74);
-
   --background-color: rgb(10, 10, 10);
 
   --font-family: "Space Mono", monospace;
   --font-size: 1.2rem;
+}
+
+.TextLight {
+  color: var(--light);
+}
+
+.TextAccent {
+  color: var(--accent);
+}
+
+.TextDark {
+  color: var(--dark);
+}
+
+.TextBold {
+  font-weight: bold;
+}
+
+.TextItalic {
+  font-style: italic;
+}
+
+.TextUnderline {
+  text-decoration: underline;
+}
+
+.TextStrikethrough {
+  text-decoration: line-through;
+}
+
+.TextFlash {
+  animation: flash 0.8s infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes flash {
+  0% {
+    color: var(--accent);
+  }
+  50% {
+    color: var(--light);
+  }
+  100% {
+    color: var(--accent);
+  }
+}
+
+.TextInvert {
+  background-color: var(--light);
+  color: var(--background);
+}
+
+.MotionParent {
+  position: relative;
+  width: 100%;
+  visibility: hidden;
+}
+
+.TextQuake {
+  visibility: visible;
+  --distance: 0.25rem;
+  --y-offset: 0.1rem;
+  animation: quake 0.4s infinite;
+  animation-timing-function: steps(1, end);
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+
+/* Shake in seemingly random directions */
+@keyframes quake {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  10% {
+    transform: translateX(calc(var(--distance) * 0.5))
+      translateY(calc(var(--y-offset) + var(--distance) * -0.2));
+  }
+  20% {
+    transform: translateX(calc(var(--distance) * -0.2))
+      translateY(calc(var(--y-offset) + var(--distance) * -0.4));
+  }
+  30% {
+    transform: translateX(calc(var(--distance) * 0.3))
+      translateY(calc(var(--y-offset) + var(--distance) * 0.1));
+  }
+  40% {
+    transform: translateX(calc(var(--distance) * -0.4))
+      translateY(calc(var(--y-offset) + var(--distance) * 0.3));
+  }
+  50% {
+    transform: translateX(calc(var(--distance) * 0.1))
+      translateY(calc(var(--y-offset) + var(--distance) * -0.5));
+  }
+  60% {
+    transform: translateX(calc(var(--distance) * 0.2))
+      translateY(calc(var(--y-offset) + var(--distance) * -0.6));
+  }
+  70% {
+    transform: translateX(calc(var(--distance) * -0.3))
+      translateY(calc(var(--y-offset) + var(--distance) * 0.4));
+  }
+  80% {
+    transform: translateX(calc(var(--distance) * 0.4))
+      translateY(calc(var(--y-offset) + var(--distance) * 0.2));
+  }
+  90% {
+    transform: translateX(calc(var(--distance) * -0.5))
+      translateY(calc(var(--y-offset) + var(--distance) * -0.1));
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
 }

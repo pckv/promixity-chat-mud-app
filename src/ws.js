@@ -1,26 +1,19 @@
 import { createSignal } from "solid-js";
 
-export const createWebSocket = ({
-  url,
-  onMessage,
-  onOpen,
-  onClose,
-  onReconnect,
-  onError,
-}) => {
+export const createWebSocket = (props) => {
   const [ws, setWs] = createSignal(null);
 
   const newWebSocket = () => {
-    const newWs = new WebSocket(url);
-    newWs.onmessage = onMessage;
-    newWs.onopen = onOpen;
-    newWs.onerror = onError;
+    const newWs = new WebSocket(props.url);
+    newWs.onmessage = props.onMessage;
+    newWs.onopen = props.onOpen;
+    newWs.onerror = props.onError;
     newWs.onclose = () => {
-      onClose?.();
+      props.onClose?.();
       setTimeout(() => {
         newWebSocket();
         newWs.close();
-        onReconnect?.();
+        props.onReconnect?.();
       }, 2000);
     };
     setWs(newWs);

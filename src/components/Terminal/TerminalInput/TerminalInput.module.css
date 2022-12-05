@@ -20,5 +20,5 @@
 }
 
 .Input textarea::placeholder {
-  color: var(--text-color-secondary);
+  color: var(--accent);
 }
