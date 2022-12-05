@@ -16,6 +16,8 @@
   background-color: transparent;
   resize: none;
 
+  color: var(--light);
+
   flex: 1;
 }
 
