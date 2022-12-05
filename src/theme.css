@@ -1,0 +1,7 @@
+:root {
+  --text-color: rgb(242, 242, 242);
+  --background-color: rgb(10, 10, 10);
+
+  --font-family: "Space Mono", monospace;
+  --font-size: 1.2rem;
+}

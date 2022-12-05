@@ -1,6 +1,7 @@
 import { For } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 import styles from "./Terminal.module.css";
+import { TerminalInput } from "./TerminalInput/TerminalInput";
 
 export const Terminal = () => {
   const [messages, setMessages] = createStore([]);
@@ -23,6 +24,16 @@ export const Terminal = () => {
     }
   };
 
+  const ws = new WebSocket("ws://localhost:8080");
+  ws.onmessage = (event) => {
+    addMessage(event.data);
+  };
+
+  const onMessageSend = (text) => {
+    addMessage(" > " + text);
+    ws.send(text);
+  };
+
   return (
     <div class={styles.Terminal}>
       <div class={styles.Messages} ref={messagesRef}>
@@ -30,27 +41,7 @@ export const Terminal = () => {
           {(message) => <div class={styles.Message}>{message}</div>}
         </For>
       </div>
-      <div class={styles.Input}>
-        <textarea
-          rows={1}
-          placeholder="Type a command..."
-          onInput={(e) => {
-            // Auto resize the textarea
-            e.target.style.height = "auto";
-            e.target.style.height = `${e.target.scrollHeight}px`;
-          }}
-          onKeyPress={(e) => {
-            // Make enter key submit the command
-            if (e.key === "Enter") {
-              e.preventDefault();
-              const value = e.target.value;
-              e.target.value = "";
-              e.target.style.height = "auto";
-              addMessage(" > " + value);
-            }
-          }}
-        />
-      </div>
+      <TerminalInput onSend={onMessageSend} />
     </div>
   );
 };
