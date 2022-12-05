@@ -1,10 +1,11 @@
 import { For } from "solid-js";
 import { createStore, produce } from "solid-js/store";
+import { createWebSocket } from "../../ws";
 import styles from "./Terminal.module.css";
 import { TerminalInput } from "./TerminalInput/TerminalInput";
 
 export const Terminal = () => {
-  const [messages, setMessages] = createStore([]);
+  const [messages, setMessages] = createStore(["Connecting..."]);
   let messagesRef;
 
   const addMessage = (message) => {
@@ -24,14 +25,16 @@ export const Terminal = () => {
     }
   };
 
-  const ws = new WebSocket("ws://localhost:8080");
-  ws.onmessage = (event) => {
-    addMessage(event.data);
-  };
+  const { send } = createWebSocket({
+    url: "ws://localhost:8080",
+    onMessage: (event) => addMessage(event.data),
+    onClose: () => addMessage("Connection closed"),
+    onReconnect: () => addMessage("Reconnecting..."),
+  });
 
   const onMessageSend = (text) => {
     addMessage(" > " + text);
-    ws.send(text);
+    send(text);
   };
 
   return (
