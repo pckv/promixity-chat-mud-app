@@ -7,7 +7,7 @@
   font-family: var(--font-family);
   font-size: var(--font-size);
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--text-color-primary);
 }
 
 .Messages {

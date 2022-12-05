@@ -1,5 +1,8 @@
 :root {
-  --text-color: rgb(242, 242, 242);
+  --text-color-primary: rgb(242, 242, 242);
+  --text-color-secondary: rgb(120, 120, 120);
+  --text-color-error: rgb(255, 74, 74);
+
   --background-color: rgb(10, 10, 10);
 
   --font-family: "Space Mono", monospace;
