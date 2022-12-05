@@ -34,7 +34,9 @@ export const Terminal = () => {
 
   const onMessageSend = (text) => {
     addMessage(" > " + text);
-    send(text);
+    try {
+      send(text);
+    } catch (e) {}
   };
 
   return (
