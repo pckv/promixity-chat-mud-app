@@ -1,6 +1,4 @@
 :root {
-  --background-color: rgb(10, 10, 10);
-
   --font-family: "Space Mono", monospace;
   --font-size: 1.2rem;
 }
@@ -53,6 +51,10 @@
 .TextInvert {
   background-color: var(--light);
   color: var(--background);
+  margin-left: -0.35rem;
+  margin-right: -0.35rem;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
 }
 
 .MotionParent {
@@ -69,7 +71,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  white-space: nowrap;
+  width: 100vw;
 }
 
 /* Shake in seemingly random directions */

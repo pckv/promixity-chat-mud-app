@@ -54,10 +54,14 @@ export const Terminal = () => {
   });
 
   const onMessageSend = (text) => {
-    addMessage("> " + text);
-    try {
-      send(text);
-    } catch (e) {}
+    if (text === "clear") {
+      setMessages([]);
+    } else {
+      addMessage("> " + text);
+      try {
+        send(text);
+      } catch (e) {}
+    }
   };
 
   return (

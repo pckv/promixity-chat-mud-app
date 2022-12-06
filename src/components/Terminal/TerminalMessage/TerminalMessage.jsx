@@ -1,29 +1,3 @@
-import styles from "./TerminalMessage.module.css";
-
-export const TerminalMessage = (props) => (
-  <div class={styles.Message}>
-    <FormattedMessage message={props.message} />
-  </div>
-);
-
-const colorModifiers = {
-  "&l": "TextLight",
-  "&a": "TextAccent",
-  "&d": "TextDark",
-};
-
-const styleModifiers = {
-  "&b": "TextBold",
-  "&i": "TextItalic",
-  "&u": "TextUnderline",
-  "&s": "TextStrikethrough",
-  "&f": "TextFlash",
-  "&x": "TextInvert",
-  "&q": "TextQuake",
-};
-
-const modifierPattern = /(&\/?[a-z])/g;
-
 /// Example:
 ///
 /// &aConnecting to &bserver&/b... &lHold on
@@ -34,7 +8,7 @@ const modifierPattern = /(&\/?[a-z])/g;
 /// <span accent bold>server</span>
 /// <span accent>... </span>
 /// <span light>Hold on</span>
-const FormattedMessage = (props) => {
+export const TerminalMessage = (props) => {
   // Find all the modifiers in the message
   const parts = props.message.split(modifierPattern).filter(Boolean);
 
@@ -81,5 +55,23 @@ const FormattedMessage = (props) => {
     }
   }
 
-  return <>{spans}</>;
+  return <div>{spans}</div>;
 };
+
+const colorModifiers = {
+  "&l": "TextLight",
+  "&a": "TextAccent",
+  "&d": "TextDark",
+};
+
+const styleModifiers = {
+  "&b": "TextBold",
+  "&i": "TextItalic",
+  "&u": "TextUnderline",
+  "&s": "TextStrikethrough",
+  "&f": "TextFlash",
+  "&x": "TextInvert",
+  "&q": "TextQuake",
+};
+
+const modifierPattern = /(&\/?[a-z])/g;
