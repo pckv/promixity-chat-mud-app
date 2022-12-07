@@ -22,14 +22,7 @@ export const AppDev = () => {
     <div class={styles.App}>
       <div class={styles.TerminalsContainer}>
         <For each={terminals}>
-          {(id) => (
-            <div class={styles.TerminalContainer}>
-              <Terminal onExit={() => removeTerminal(id)} />
-              <a onClick={() => removeTerminal(id)} class={styles.RemoveButton}>
-                -
-              </a>
-            </div>
-          )}
+          {(id) => <Terminal onExit={() => removeTerminal(id)} />}
         </For>
       </div>
       <a onClick={addTerminal} class={styles.AddButton}>

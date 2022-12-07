@@ -11,33 +11,11 @@
   grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.TerminalsContainer > * {
-  grid-row: auto;
-  position: relative;
-}
-
-.TerminalContainer {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.Button {
+.AddButton {
   position: absolute;
-  margin: 1rem;
+  top: 8px;
+  right: 24px;
   cursor: pointer;
   color: #aaa;
   user-select: none;
-}
-
-.AddButton {
-  composes: Button;
-  bottom: 0;
-  right: 0;
-}
-
-.RemoveButton {
-  composes: Button;
-  top: 0;
-  right: 0;
 }
