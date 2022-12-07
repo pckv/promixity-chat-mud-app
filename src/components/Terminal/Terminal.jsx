@@ -5,7 +5,7 @@ import styles from "./Terminal.module.css";
 import { TerminalInput } from "./TerminalInput/TerminalInput";
 import { TerminalMessage } from "./TerminalMessage/TerminalMessage";
 
-export const Terminal = () => {
+export const Terminal = (props) => {
   const [messages, setMessages] = createStore(["&aConnecting to server..."]);
   let messagesRef;
 
@@ -56,6 +56,8 @@ export const Terminal = () => {
   const onMessageSend = (text) => {
     if (text === "clear") {
       setMessages([]);
+    } else if (text === "exit") {
+      props.onExit?.();
     } else {
       addMessage("> " + text);
       try {

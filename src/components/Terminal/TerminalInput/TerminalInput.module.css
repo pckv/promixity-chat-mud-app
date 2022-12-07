@@ -23,4 +23,7 @@
 
 .Input textarea::placeholder {
   color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

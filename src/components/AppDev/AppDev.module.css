@@ -1,0 +1,43 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.TerminalsContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.TerminalsContainer > * {
+  grid-row: auto;
+  position: relative;
+}
+
+.TerminalContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.Button {
+  position: absolute;
+  margin: 1rem;
+  cursor: pointer;
+  color: #aaa;
+  user-select: none;
+}
+
+.AddButton {
+  composes: Button;
+  bottom: 0;
+  right: 0;
+}
+
+.RemoveButton {
+  composes: Button;
+  top: 0;
+  right: 0;
+}
